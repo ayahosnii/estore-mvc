@@ -3,7 +3,7 @@ namespace estore;
 
 use estore\app\lib\FrontController;
 use estore\app\lib\SessionManager;
-use estore\app\lib\Template;
+use estore\app\lib\template\Template;
 use estore\app\lib\Language;
 use mysql_xdevapi\Session;
 

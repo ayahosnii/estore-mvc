@@ -1,6 +1,5 @@
 <?php
-namespace app\models;
-require_once 'C:\xampp\htdocs\estore\app\models\AbstractModel.php';
+namespace estore\app\models;
 
 class Employee extends AbstractModel
 {

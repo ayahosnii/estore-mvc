@@ -7,9 +7,8 @@
         <span class="privilege"><?= $text_app_manager ?></span>
     </div>
     <ul class="app_navigation">
-        <li><a href="/language">  <i class="fa fa-user"></i><?= $text_change_language ?></a></li>
 
-        <li class=""><a href="/"><i class="fa fa-dashboard"></i> <?= $text_general_statistics ?></a></li>
+        <li class="<?= $this->matchUrl('/') === true ? 'selected' : ''?>"><a href="/"><i class="fa fa-dashboard"></i> <?= $text_general_statistics ?></a></li>
 
         <li class="submenu">
             <a href="javascript:;"><i class="fa fa-credit-card"></i> <?= $text_transactions ?></a>
@@ -33,7 +32,7 @@
             </ul>
         </li>
         <li><a href="/clients"><i class="material-icons">contacts</i> <?= $text_clients ?></a></li>
-        <li class=""><a href="/suppliers"><i class="material-icons">group</i> <?= $text_suppliers ?></a></li>
+        <li class="<?= $this->matchUrl('/suppliers') === true ? 'selected' : ''?>"><a href="/suppliers"><i class="material-icons">group</i> <?= $text_suppliers ?></a></li>
         <li class="submenu">
             <a href="javascript:;"><i class="fa fa-user"></i> <?= $text_users ?></a>
             <ul>

@@ -3,11 +3,10 @@
 namespace estore\app\controllers;
 
 
-use app\models\Employee;
+use estore\app\models\Employee;
 use estore\app\lib\Helper;
 use  estore\app\lib\InputFilter;
 
-require_once 'C:\xampp\htdocs\estore\app\models\Employee.php';
 
 class EmployeeController extends AbstractController
 {

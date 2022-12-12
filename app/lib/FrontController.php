@@ -2,9 +2,11 @@
 namespace estore\app\lib;
 
 
+use estore\app\lib\template\Template;
+
 class FrontController
 {
-    const NOT_FOUND_ACTION = 'NotFoundAction';
+    const NOT_FOUND_ACTION = 'notFoundAction';
     const NOT_FOUND_CONTROLLER = 'estore\app\controllers\NotFoundController';
 
     private $_controller = 'index';
@@ -48,14 +50,12 @@ class FrontController
     {
         $controllerClassName = 'estore\app\controllers\\'.ucfirst($this->_controller) . 'Controller';
         $actionName = $this->_action . 'Action';
-        if(!class_exists($controllerClassName)){
+        if(!class_exists($controllerClassName) || !method_exists($controllerClassName, $actionName)) {
             $controllerClassName = self::NOT_FOUND_CONTROLLER;
-        }
-        $controller = new $controllerClassName();
-        if (!method_exists($controller, $actionName)){
             $this->_action = $actionName = self::NOT_FOUND_ACTION;
         }
 
+        $controller = new $controllerClassName();
         $controller->setController($this->_controller);
         $controller->setAction($this->_action);
         $controller->setParams($this->_params);

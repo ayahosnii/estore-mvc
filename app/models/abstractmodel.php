@@ -1,5 +1,5 @@
 <?php
-namespace app\models;
+namespace estore\app\models;
 
 use estore\app\lib\database\DatabaseHandler;
 

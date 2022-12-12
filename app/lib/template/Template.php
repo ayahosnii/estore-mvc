@@ -1,9 +1,12 @@
 <?php
 
-namespace estore\app\lib;
+namespace estore\app\lib\template;
+
+use estore\app\lib\template\TemplateHelper;
 
 class Template
 {
+    use TemplateHelper;
     private $_templateParts;
     private $_action_view;
     private $_data;
