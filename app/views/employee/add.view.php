@@ -1,246 +1,68 @@
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Audiowide&display=swap');
-
-
-
-    h1{
-        position: absolute;
-        top: 0;
-        left: 50%;
-        font-size: 32px;
-        text-transform: uppercase;
-        transform: translate(-50%, -50%);
-        display: block;
-        color: #12000a;
-        font-weight: 300;
-        font-family: Audiowide;
-        text-shadow: 0px 0px 4px #12000a;
-        animation: fadeInText 1s ease-in 1.5s forwards, flicker4 3s linear 5.5s infinite, hueRotate 4s ease-in-out 1s infinite;
-    }
-
-
-
-    @keyframes flicker4{
-        0%  {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-        30% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-        31% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
-        32% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-        36% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-        37% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
-        41% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
-        42% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-        85% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-        86% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
-        95% {color: #12000a;text-shadow:0px 0px 4px #12000a;}
-        96% {color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-        100%{color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-    }
-
-    @keyframes fadeInText{
-        1%  {color: #12000a;text-shadow:0px 0px 4px #12000a;}
-        70% {color: #ff005d;text-shadow:0px 0px 14px #ff005d;}
-        100%{color: #ff005d;text-shadow:0px 0px 4px #ff005d;}
-    }
-
-    @keyframes hueRotate{
-        0%  {
-            filter: hue-rotate(0deg);
-        }
-        50%  {
-            filter: hue-rotate(-120deg);
-        }
-        100%  {
-            filter: hue-rotate(0deg);
-        }
-    }
-
-    /**{*/
-    /*    margin: 0;*/
-    /*    padding: 0;*/
-    /*    border: 0;*/
-    /*    outline: none;*/
-    /*    line-height: 1.2;*/
-    /*    font-size: 1em;*/
-    /*}*/
-
-    div.wrapper {
-        overflow: hidden;
-
-    }
-    div.wrapper div.empform{
-        margin: 0 auto;
-        width: 500px;
-    }
-
-    div.wrapper div.employees{
-        margin: 0 auto;
-        width: 700px;
-    }
-
-    form.app_form{
-        width: 500px;
-        margin: 20px;
-    }
-
-    form.app_form fieldset{
-        padding: 10px;
-        background: #f1f1f1;
-        border: solid 1px #e4e4e4;
-    }
-    form.app_form fieldset legend{
-        font: 1em 'Arial, Helvetice, sans-serif';
-        color: #666;
-        background: #e4e4e4;
-        padding: 5px;
-    }
-
-    form.app_form fieldset p.message{
-        background: #9adc81;
-        border: #5daf00;
-        color: #000000;
-        padding: 5px;
-        margin: 3px;
-        border-radius: 3px;
-    }
-    form.app_form fieldset p.message.error{
-        background: #dc8181;
-        border: #af0000;
-        color: #000000;
-        padding: 5px;
-        margin: 3px;
-    }
-
-    form.app_form table {
-        width: 100%;
-    }
-    form.app_form label {
-        font-family: Arial;
-        color: #666666;
-    }
-    form.app_form table tr td input/*[type=text]*/{
-        width: 90%;
-        padding: 2%;
-        font-size: 1em;
-
-    }
-    form.app_form table tr td input[type=submit]{
-        padding: 8px;
-        border-radius: 3px;
-        background: darkcyan;
-        color: #fff;
-        font-family: Arial;
-        font-size: 1em;
-        cursor: pointer;
-    }
-    form.app_form table tr td{
-        padding: 4px;
-    }
-
-    div.wrapper div.employees table{
-        width: 780px;
-        margin: 20px 20px 0 0;
-        border-collapse: collapse;
-    }
-
-    div.wrapper div.employees table thead th{
-        text-align: left;
-        padding: 5px;
-        border-left: solid 2px #e4e4e4;
-        border-bottom: solid 2px #e4e4e4;
-        font: bold 0.9em Arial Helvetica, sans-serif;
-    }
-
-    div.wrapper div.employees table thead th:last-of-type{
-        border-right: none;
-    }
-
-    div.wrapper div.employees table tbody td{
-        text-align: left;
-        padding: 5px;
-        border: solid 1px #e4e4e4;
-        font: bold 0.9em Arial Helvetica, sans-serif;
-    }
-
-    div.wrapper div.employees table tbody td a:link,
-    div.wrapper div.employees table tbody td a:visited{
-        color: darkcyan;
-    }
-</style>
-
-<link rel="stylesheet" href="../../public/main.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-
-
-
-<div class="wrapper">
-    <h1>Welcome to estore</h1>
-    <div class="empform">
-        <form class="app_form" method="POST" enctype="application/x-www-form-urlencoded">
-            <fieldset>
-                <legend>Employee Information</legend>
-                <?php if (isset($_SESSION['message'])) { ?>
-                    <p class="message <?= isset($error) ? 'error' : '' ?>"> <?= $_SESSION['message'] ?></p>
-                    <?php
-                    unset($_SESSION['message']);
-                }
-                ?>
-                <table>
-                    <tr>
-                        <label for="name">Employee Name</label>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" id="name" name="name" placeholder="Write the employee name here" maxlength="50">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="age">Employee Age</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="number" id="age" name="age" min="22" max="60">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="address">Employee Address</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="text" id="address" name="address" placeholder="Write the employee address here">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="salary">Employee Salary</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="number" id="salary" name="salary" step="0.01" min="1500" max="9000">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="tax">Employee Tax (%)</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="number" id="tax" name="tax" step="0.01" min="1" max="5">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="submit" name="submit" value="save">
-                        </td>
-                    </tr>
-                </table>
-            </fieldset>
-        </form>
-    </div>
-</div>
-
+<form autocomplete="off" class="appForm clearfix" method="post" enctype="application/x-www-form-urlencoded">
+    <fieldset>
+        <legend><?= $text_employee_details ?></legend>
+        <div class="input_wrapper n40 border">
+            <label><?= $text_label_name ?></label>
+            <input required type="text" name="name" id="name" maxlength="50">
+        </div>
+        <div class="input_wrapper n40 padding border">
+            <label><?= $text_label_address ?></label>
+            <input required type="text" id="address" name="address" maxlength="100">
+        </div>
+        <div class="input_wrapper_other n20 padding">
+            <label><?= $text_label_gender ?></label>
+            <label class="radio">
+                <input required type="radio" name="gender" id="gender" value="1">
+                <div class="radio_button"></div>
+                <span><?= $text_label_gender_male ?></span>
+            </label>
+            <label class="radio">
+                <input required type="radio" name="gender" id="gender" value="2">
+                <div class="radio_button"></div>
+                <span><?= $text_label_gender_female ?></span>
+            </label>
+        </div>
+        <div class="input_wrapper n30 border">
+            <label><?= $text_label_age ?></label>
+            <input required type="number" min="22" max="60" name="age" id="age">
+        </div>
+        <div class="input_wrapper n20 padding border">
+            <label><?= $text_label_salary ?></label>
+            <input required type="number" id="salary" step="0.01" name="salary" min="1500" max="9000">
+        </div>
+        <div class="input_wrapper n20 padding border">
+            <label><?= $text_label_tax ?></label>
+            <input required type="number" id="tax" step="0.01" name="tax" min="1" max="5">
+        </div>
+        <div class="input_wrapper_other n30 padding select">
+            <select required name="type" id="type">
+                <option value=""><?= $text_label_choose_employee_type ?></option>
+                <option value="1"><?= $text_label_type_part_time ?></option>
+                <option value="2"><?= $text_label_type_full_time ?></option>
+            </select>
+        </div>
+        <div class="input_wrapper_other">
+            <label><?= $text_label_os ?></label>
+            <label class="checkbox block">
+                <input type="checkbox" name="os[]" id="os" value="1">
+                <div class="checkbox_button"></div>
+                <span><?= $text_label_os_windows ?></span>
+            </label>
+            <label class="checkbox block">
+                <input type="checkbox" name="os[]" id="os" value="2">
+                <div class="checkbox_button"></div>
+                <span><?= $text_label_os_linux ?></span>
+            </label>
+            <label class="checkbox block">
+                <input type="checkbox" name="os[]" id="os" value="3">
+                <div class="checkbox_button"></div>
+                <span><?= $text_label_os_mac ?></span>
+            </label>
+        </div>
+        <div class="input_wrapper_other">
+            <label><?= $text_label_notes ?></label>
+            <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+        </div>
+        <input class="no_float" type="submit" name="submit" value="<?= $text_label_save ?>">
+    </fieldset>
+</form>

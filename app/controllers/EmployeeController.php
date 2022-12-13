@@ -24,6 +24,10 @@ class EmployeeController extends AbstractController
     public function addAction()
     {
         $this->_language->load('template.common');
+        $this->_language->load('employee.default');
+        $this->_language->load('employee.add');
+        $this->_language->load('employee.labels');
+
         if(isset($_POST['submit'])){
             $emp = new Employee();
             $emp->name = $this->filterString($_POST['name']);
