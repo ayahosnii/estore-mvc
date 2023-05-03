@@ -44,7 +44,19 @@
         <li><a href="/reports"><i class="fa fa-bar-chart"></i> <?= $text_reports ?></a></li>
         <li><a href="/notifications"><i class="fa fa-bell"></i> <?= $text_notifications ?></a></li>
         <li><a href="/auth/logout"><i class="fa fa-sign-out"></i> <?= $text_log_out ?></a></li>
+
+        <?php $messages = $this->messenger->getMessages();
+
+        if (!empty($messages)) {
+        echo $messages;
+
+
+
+            foreach ($messages as $message) :
+        ?>
+
     </ul>
 </nav>
 <div class="action_view">
-<!--    <p class='message'></p>-->
+    <p class='message t<?= $message[1]?>'><?= $message[0]?></p>
+    <?php endforeach;  }else{echo 'hi';}?>

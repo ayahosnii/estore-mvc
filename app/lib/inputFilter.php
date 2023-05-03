@@ -1,7 +1,7 @@
 <?php
 namespace estore\app\lib;
 
-trait inputFilter
+trait InputFilter
 {
    public function filterInt($input)
    {
