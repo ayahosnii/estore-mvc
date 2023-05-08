@@ -6,7 +6,7 @@ class Privilege extends AbstractModel
     public $PrivilegeId;
     public $Privilege;
     public $PrivilegeTitle;
-
+//
 
     protected static $tableName = 'app_users_privileges';
 
