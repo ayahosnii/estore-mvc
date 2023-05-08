@@ -28,6 +28,23 @@ class Language {
         var_dump($languageFileContent);
     }
 
+    public function get($key)
+    {
+        if (array_key_exists($key, $this->dictionary)) {
+            return $this->dictionary[$key];
+        }
+    }
+
+    public function feedKey($key,$data = [])
+    {
+        if (array_key_exists($key, $this->dictionary)) {
+
+            array_unshift($this->dictionary[$key]);
+            var_dump($data);
+            //return call_user_func_array('sprinf', $data);
+        }
+    }
+
     public function getDictionary()
     {
         return $this->dictionary;

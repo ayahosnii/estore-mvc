@@ -106,9 +106,14 @@ trait Validate
                 $value = $inputType[$fieldName];
                 $validationRoles = explode('|', $validationRoles);
                 foreach ($validationRoles as $validationRole ) {
-                    if (preg_match_all('/min\((\d+)\)/', $validationRole, $m)){
+                    if (preg_match_all('/(min)\((\d+)\)/', $validationRole, $m)){
                         if($this->min($value, $m[1][0] === false)) {
-                            $this->messenger->add('text_label_' . $fieldName, Messenger::APP_MESSAGE_ERROR);
+                            $this->messenger->add(
+                                $this->language->feedKey('text_error_'. $m[1][0], [$fieldName, $m[2][0]])
+                               /* getDictionary()['text_label_' . $fieldName] . ' '.
+                                $this->language->getDictionary()['text_error_' . $m[1][0]],
+                                Messenger::APP_MESSAGE_ERROR*/
+                            );
                         }
                     }
                 }

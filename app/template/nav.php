@@ -47,16 +47,16 @@
 
         <?php $messages = $this->messenger->getMessages();
 
-        if (!empty($messages)) {
+       /* if (!empty($messages)) {
         echo $messages;
 
 
 
-            foreach ($messages as $message) :
+        foreach ($messages as $message) :*/
         ?>
 
     </ul>
 </nav>
 <div class="action_view">
-    <p class='message t<?= $message[1]?>'><?= $message[0]?></p>
-    <?php endforeach;  }else{echo 'hi';}?>
+    <!--<p class='message t<?/*= $message[1]*/?>'><?/*= $message[0]*/?></p>
+--><?php /*endforeach;  }else{echo 'hi';}*/?>
