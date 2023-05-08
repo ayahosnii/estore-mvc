@@ -36,10 +36,10 @@ class PrivilegesController extends AbstractController
             if ($privilege->save())
             {
                 $this->messenger->add('تم حفظ الصلاحية بنجاح');
-                $this->messenger->add('خطـ في حفظ الصلاحية', Messenger::APP_MESSAGE_ERROR);
-                $this->messenger->add('انتيه: الصلاحية موجودة من قبل', Messenger::APP_MESSAGE_WARNING);
-                $this->messenger->add('قم بعمل صلاحيات ملائمة للمستخدم', Messenger::APP_MESSAGE_INFO);
-                $this->redirect('/privileges');
+                //$this->messenger->add('خطـ في حفظ الصلاحية', Messenger::APP_MESSAGE_ERROR);
+                //$this->messenger->add('انتيه: الصلاحية موجودة من قبل', Messenger::APP_MESSAGE_WARNING);
+                //$this->messenger->add('قم بعمل صلاحيات ملائمة للمستخدم', Messenger::APP_MESSAGE_INFO);
+                //$this->redirect('/privileges');
             }
         }
         $this->_view();

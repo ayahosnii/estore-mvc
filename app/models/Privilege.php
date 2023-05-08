@@ -3,8 +3,9 @@ namespace estore\app\models;
 
 class Privilege extends AbstractModel
 {
-    public $GroupId;
-    public $GroupName;
+    public $PrivilegeId;
+    public $Privilege;
+    public $PrivilegeTitle;
 
 
     protected static $tableName = 'app_users_privileges';
@@ -12,7 +13,7 @@ class Privilege extends AbstractModel
     protected static $tableSchema = array(
         'PrivilegeId'         => self::DATA_TYPE_INT,
         'Privilege'           => self::DATA_TYPE_STR,
-        'PrivilegeTitle'           => self::DATA_TYPE_STR,
+        'PrivilegeTitle'      => self::DATA_TYPE_STR,
     );
 
     protected static $primaryKey = 'PrivilegeId';
